@@ -1,7 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// JavaScript plugin that hides or shows a component based on your scroll
-import Headroom from "headroom.js";
 // reactstrap components
 import {
   Button,
@@ -16,11 +14,7 @@ import {
 } from "reactstrap";
 
 class DemoNavbar extends React.Component {
-  componentDidMount() {
-    let headroom = new Headroom(document.getElementById("navbar-main"));
-    // initialise
-    headroom.init();
-  }
+
   state = {
     collapseClasses: "",
     collapseOpen: false
@@ -39,8 +33,8 @@ class DemoNavbar extends React.Component {
               <NavbarBrand className="mr-lg-5" to="/" tag={Link}>
                 <img
                   alt="..."
-                  style={{height: 60, width:80}}
-                  src={require("assets/img/logo-solo.png")}
+                  style={{height: 50, width:140}}
+                  src={require("assets/img/smtt.png")}
                 />
               </NavbarBrand>
               <UncontrolledCollapse
