@@ -86,9 +86,6 @@ class Landing extends React.Component {
           <br />
           <br />
           <br />
-          <br />
-          <br />
-          <br />
           <section className="section section-lg pt-lg-0 section-contact-us">
             <Container>
               <Row className="justify-content-center mt--300">
@@ -202,7 +199,7 @@ class Landing extends React.Component {
                           className="form-control-alternative"
                           cols="80"
                           name="name"
-                          placeholder="Informe seu problema... *"
+                          placeholder="Informações adcionais... *"
                           rows="4"
                           type="textarea"
                         />
