@@ -153,6 +153,7 @@ class Landing extends React.Component {
                             </InputGroupText>
                           </InputGroupAddon>
                           <Input
+                            required={true}
                             placeholder="Telefone *"
                             type="text"
                             onFocus={e => this.setState({ phoneFocused: true })}
@@ -184,7 +185,7 @@ class Landing extends React.Component {
 
                       {/* Selecionar Serviço */}
                       <FormGroup>
-                        <Label for="exampleSelect">Selecione o serviço que deseja ser atendido</Label>
+                        <Label for="exampleSelect">Selecione o serviço que deseja ser atendido *</Label>
                         <Input type="select" name="select" id="exampleSelect">
                           <option>Defesa Prévia</option>
                           <option>Táxi</option>
@@ -193,24 +194,16 @@ class Landing extends React.Component {
                         </Input>
                       </FormGroup>
 
-
-                      <FormGroup className="mb-4">
-                        <Input
-                          className="form-control-alternative"
-                          cols="80"
-                          name="name"
-                          placeholder="Informações adcionais... *"
-                          rows="4"
-                          type="textarea"
-                        />
+                      <FormGroup>
+                        <Label for="exampleSelect">Subcategoria *</Label>
+                        <Input type="select" name="select" id="exampleSelect">
+                          <option>1</option>
+                          <option>2</option>
+                          <option>3</option>
+                          <option>4</option>
+                        </Input>
                       </FormGroup>
 
-                      <FormGroup className="mb-4">
-                        <Input
-                          placeholder="anexo"
-                          type="file"
-                        />
-                      </FormGroup>
                       <div>
                         <Button
                           block
@@ -219,7 +212,7 @@ class Landing extends React.Component {
                           size="lg"
                           type="button"
                         >
-                          Agendar atendimento
+                          Próximo
                         </Button>
                       </div>
                       <br />
