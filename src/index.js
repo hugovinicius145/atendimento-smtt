@@ -7,11 +7,13 @@ import "assets/vendor/font-awesome/css/font-awesome.min.css";
 import "assets/scss/argon-design-system-react.scss?v1.1.0";
 
 import Index from "views/Index.js";
+import Agendamento from 'views/Agendamento';
 
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
       <Route path="/" exact render={props => <Index {...props} />} />
+      <Route path="/agendamento" render={props => <Agendamento {...props} />} />
       <Redirect to="/" />
     </Switch>
   </BrowserRouter>,

@@ -1,34 +1,33 @@
 import React from "react";
-import classnames from "classnames";
-
+// import classnames from "classnames";
+import Home from './Home';
+import Agendamento from './Agendamento';
 // reactstrap components
-import {
-  Button,
-  Card,
-  CardBody,
-  FormGroup,
-  Label,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
-  Container,
-  Row,
-  Col
-} from "reactstrap";
+import {Card, CardBody, Container, Row, Col} from "reactstrap";
 
 // core components
 import DemoNavbar from "components/Navbars/DemoNavbar.js";
 import CardsFooter from "components/Footers/CardsFooter.js";
 
-class Landing extends React.Component {
-  state = {};
+export default class Landing extends React.Component {
+
+  state = {
+    pageInitial: true,
+    agendamento: {},
+  };
+
   componentDidMount() {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
     this.refs.main.scrollTop = 0;
   }
+  Agendamento
+  handlePage = (pageInitial, agendamento) => {
+    this.setState({pageInitial, agendamento});
+  }
+
   render() {
+    const {pageInitial, agendamento} = this.state;
     return (
       <>
         <DemoNavbar />
@@ -81,7 +80,6 @@ class Landing extends React.Component {
                 </svg>
               </div>
             </section>
-            {/* 1st Hero Variation */}
           </div>
           <br />
           <br />
@@ -96,129 +94,14 @@ class Landing extends React.Component {
                       <p className="mt-0">
                         Informe seus dados.
                       </p>
-
-                      {/* Nome */}
-                      <FormGroup
-                        className={classnames("mt-5", {
-                          focused: this.state.nameFocused
-                        })}
-                      >
-                        <InputGroup className="input-group-alternative">
-                          <InputGroupAddon addonType="prepend">
-                            <InputGroupText>
-                              <i className="ni ni-user-run" />
-                            </InputGroupText>
-                          </InputGroupAddon>
-                          <Input
-                            placeholder="Nome completo *"
-                            type="text"
-                            onFocus={e => this.setState({ nameFocused: true })}
-                            onBlur={e => this.setState({ nameFocused: false })}
-                          />
-                        </InputGroup>
-                      </FormGroup>
-
-                      {/* Cpf */}
-                      <FormGroup
-                        className={classnames({
-                          focused: this.state.cpfFocused
-                        })}
-                      >
-                        <InputGroup className="input-group-alternative">
-                          <InputGroupAddon addonType="prepend">
-                            <InputGroupText>
-                              <i className="fa fa-id-card" />
-                            </InputGroupText>
-                          </InputGroupAddon>
-                          <Input
-                            placeholder="CPF *"
-                            type="text"
-                            onFocus={e => this.setState({ cpfFocused: true })}
-                            onBlur={e => this.setState({ cpfFocused: false })}
-                          />
-                        </InputGroup>
-                      </FormGroup>
-
-                      {/* Telefone */}
-                      <FormGroup
-                        className={classnames({
-                          focused: this.state.phoneFocused
-                        })}
-                      >
-                        <InputGroup className="input-group-alternative">
-                          <InputGroupAddon addonType="prepend">
-                            <InputGroupText>
-                              {/* <i className="ni ni-email-83" /> */}
-                              <i className="fa fa-phone" />
-                            </InputGroupText>
-                          </InputGroupAddon>
-                          <Input
-                            required={true}
-                            placeholder="Telefone *"
-                            type="text"
-                            onFocus={e => this.setState({ phoneFocused: true })}
-                            onBlur={e => this.setState({ phoneFocused: false })}
-                          />
-                        </InputGroup>
-                      </FormGroup>
-
-                      {/* Email */}
-                      <FormGroup
-                        className={classnames({
-                          focused: this.state.emailFocused
-                        })}
-                      >
-                        <InputGroup className="input-group-alternative">
-                          <InputGroupAddon addonType="prepend">
-                            <InputGroupText>
-                              <i className="ni ni-email-83" />
-                            </InputGroupText>
-                          </InputGroupAddon>
-                          <Input
-                            placeholder="Email"
-                            type="email"
-                            onFocus={e => this.setState({ emailFocused: true })}
-                            onBlur={e => this.setState({ emailFocused: false })}
-                          />
-                        </InputGroup>
-                      </FormGroup>
-
-                      {/* Selecionar Serviço */}
-                      <FormGroup>
-                        <Label for="exampleSelect">Selecione o serviço que deseja ser atendido *</Label>
-                        <Input type="select" name="select" id="exampleSelect">
-                          <option>Defesa Prévia</option>
-                          <option>Táxi</option>
-                          <option>Turismo</option>
-                          <option>Protocolo Unificado</option>
-                        </Input>
-                      </FormGroup>
-
-                      <FormGroup>
-                        <Label for="exampleSelect">Subcategoria *</Label>
-                        <Input type="select" name="select" id="exampleSelect">
-                          <option>1</option>
-                          <option>2</option>
-                          <option>3</option>
-                          <option>4</option>
-                        </Input>
-                      </FormGroup>
-
-                      <div>
-                        <Button
-                          block
-                          className="btn-round"
-                          color="default"
-                          size="lg"
-                          type="button"
-                        >
-                          Próximo
-                        </Button>
-                      </div>
-                      <br />
                       <p className="mt-0">
                         * Campos Obrigatórios.
                       </p>
+                      {pageInitial ?
+                        (<Home handlePage={this.handlePage}/>)
+                      :
+                        (<Agendamento handlePage={this.handlePage} agendamento={agendamento}/>)
+                      }
                     </CardBody>
                   </Card>
                 </Col>
@@ -231,5 +114,3 @@ class Landing extends React.Component {
     );
   }
 }
-
-export default Landing;
